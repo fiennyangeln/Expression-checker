@@ -1,1 +1,2 @@
-"mathcheck/__pycache__"
+mathcheck/__pycache__/
+db.sqlite3
