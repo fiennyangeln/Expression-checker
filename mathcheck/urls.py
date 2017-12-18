@@ -16,8 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from checker import views
+from checker.controllers import home_views
 
 urlpatterns = [
-    url (r'^$', views.home_page, name='home'),
+    url (r'^$', home_views.home_page, name='home'),
 ]
+
+urlpatterns+= [url(r'^check_answer/$', home_views.answer_checker),]

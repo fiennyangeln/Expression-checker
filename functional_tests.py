@@ -1,4 +1,6 @@
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
 import unittest
 
 class Checker(unittest.TestCase):
@@ -10,9 +12,26 @@ class Checker(unittest.TestCase):
         self.browser.quit()
 
     def test_interface(self):
-        browser.get('http://localhost:8000')
+        self.browser.get('http://localhost:8000')
 
+        #check title and header
         self.assertIn('Math Checker',self.browser.title)
+        header_text = self.browser.find_element_by_tag_name('h1').text
+        self.assertIn('Math Checker', header_text)
+
+        #get the inputboxes and enter attribute
+        input_box_1 = self.browser.find_element_by_id('first_input')
+        input_box_1.send_keys('1+1')
+        input_box_2 = self.browser.find_element_by_id('second_input')
+        input_box_2.send_keys('2')
+
+        #send the attribute entered
+        input_box_1.send_keys(Keys.ENTER)
+        time.sleep(1)
+
+        #check the result
+        result = self.browser.find_element_by_id('result')
+
 
 if __name__=='__main__':
     unittest.main(warnings='ignore')
