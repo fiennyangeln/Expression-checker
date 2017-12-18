@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+<div class="panel panel-default">
+  <div class="panel-heading">
+  {% for i in "12" %}
+
+  {% if i == "1" %}
+    <h2> First Value </h2>
+  {% else %}
+    <h2> Second Value </h2>
+  {% endif %}
+
+    <div class="row">
+      <div id="col-md-6">
+        <div id="answer_container-61-q">
+        <span style="min-width:120px; min-height:25px;" id="value-{{i}}"></span>
+        <input type="hidden" name=""id="hidden-{{i}}" ></div>
+      </div>
+    </div>
+    {% endfor %}
+<input class="btn btn-default" type="button" value="Check" onclick="check_answer()"/>
+<span id="result"></span>
+</div>
+</div>
+
+{% endblock content %}
