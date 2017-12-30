@@ -223,6 +223,10 @@ rules = [
      r'([0-9A-Za-z\+\-\*\/\\\(\)\{\}\.\^]+)d([a-zA-Z]|\\alpha|\\beta|\\gamma|\\lambda|'
      r'\\theta|\\mu|\\sigma)',
      r'integrate(\3, (\4, \1, \2))'),
+    # Definite integration parsing step #2 when the integration factor isnt specified
+    (r'\\int_from\{([0-9A-Za-z\+\-\*\/\\\(\)\.]+)\}_to\{([0-9A-Za-z\+\-\*\/\\\(\)\.]+)\}'
+     r'([0-9A-Za-z\+\-\*\/\\\(\)\{\}\.\^]+)',
+     r'integrate(\3, (x, \1, \2))'),
     # pi as a coefficient of integration
     (r'\\piintegrate', r'\pi*integrate'),
     # backup for trigonometric, logarithmic, exponent function which was added
@@ -264,6 +268,7 @@ rules = [
     (r'p\*m', r'pm'),
     (r'm\*p', r'mp'),
     (r'rexp', r'r*exp'),
+
     #Fraction with simple expression one more time
     (r'\\frac\{([0-9A-Za-z\[\]\+\-\*\/\\\(\)\.\^]+)\}\{([0-9A-Za-z\[\]\+\-\*\/\\\(\)\.\^]+)\}',
     r'(\1)/(\2)'),
