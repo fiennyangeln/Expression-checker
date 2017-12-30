@@ -2,11 +2,10 @@ function check_answer()
 {
   var value ={};
 
-  var value_1 = document.getElementById("value-1").textContent;
-  var value_2 = document.getElementById("value-2").textContent;
+  var value_1 = document.getElementById("hidden-1").value;
+  var value_2 = document.getElementById("hidden-2").value;
   value['value_1'] = value_1;
   value['value_2'] = value_2;
-
   var csrftoken = $.cookie('csrftoken');
 
   function csrfSafeMethod(method) {

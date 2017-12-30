@@ -6,6 +6,7 @@ rules = [
     (r'\\cdot', '*'),
     # Multiply sign indicated by cross
     (r'\\times', '*'),
+    (r'·|\.','*'),
     # Degree to radian conversion
     (r'\^\{\\circ\}', '/180*\\pi'),
     # Degree to radian conversion

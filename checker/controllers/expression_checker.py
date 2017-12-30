@@ -9,6 +9,8 @@ ASCII syntax.
 
 
 def check(x, y):
+    print(x)
+    print(y)
     x_ascii = answer_transformer.transform_latex_to_sympy(x)
     y_ascii = answer_transformer.transform_latex_to_sympy(y)
     result = evaluate_answer_in_ascii(x_ascii, y_ascii)

@@ -18,14 +18,14 @@
 .title-bar {
   font-size : 2500%;
   font-size: 90px;
-  color: #fff;
+  color: #000;
   margin-top: 70px;
   margin-bottom: 0;
   font-family: 'Times New Roman', sans-serif;
 }
 h2 {
     font-size: 24px;
-    color: #fff;
+    color: #000;
     margin-top: 0;
     margin-bottom: 70px;
     display: block;

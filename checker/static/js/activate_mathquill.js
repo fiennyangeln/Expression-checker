@@ -27,6 +27,9 @@ function activateMathquillSpan(i) {
     var MQ = MathQuill.getInterface(2); // for backcompat
     var mathField = MQ.MathField(mathFieldSpan, {
         spaceBehavesLikeTab: true, // configurable
+        supSubsRequireOperand: true,
+        charsThatBreakOutOfSupSub: '+-=<>',
+        autoCommands: 'pi theta sqrt sum',
         handlers: {
             edit: function() { // useful event handler
                 latexSpan.value = mathField.latex(); // simple API
