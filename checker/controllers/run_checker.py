@@ -194,6 +194,22 @@ all_Cases = [
         ["\\frac{du}{\\cos{t}}", True],
         ["", False],
     ]
+#TODO: some solution contains only one \ for frac
+log_cases =[
+        ["\\log_2 32",True],
+        ["\\log_2 \\frac{1}{2}",True],
+        ["\\log_3 \\left( \\frac{1}{9} \\right)", True],
+        ["\\lg 100", True],
+        ["\\log_4 (2-k)", True],
+        ["\\lg \\left(x+1\\right)", True],
+        ["\\frac{ 1}{2} \\ln \\left( x-4 \\right)",True],
+        ["\\log_a \\left(\\frac{1}{2}\\right)" , True],
 
+
+
+
+
+]
 error_data = expression_checker.test_expression(all_Cases)
+error_data = expression_checker.test_expression(log_cases)
 expression_checker.test_expression(error_data)

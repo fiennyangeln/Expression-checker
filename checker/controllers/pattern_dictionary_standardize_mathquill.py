@@ -4,9 +4,9 @@ rules = [
     (r'\\operatorname\{cosec\}', '\\csc'),
     # Multiply sign indicated by circle dot
     (r'\\cdot', '*'),
-    # Multiply sign indicated by cross
+    # Multiply sign indicated by cross and dot
     (r'\\times', '*'),
-    (r'·|\.','*'),
+    (r'·','*'),
     # Degree to radian conversion
     (r'\^\{\\circ\}', '/180*\\pi'),
     # Degree to radian conversion

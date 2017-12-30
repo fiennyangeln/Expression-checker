@@ -32,12 +32,16 @@ rules = [
     # Trigonometric and logarithmic without bracket
     (r'\\(sin|cos|tan|cot|sec|csc|log|ln)([0-9]+([A-Za-z]|\\alpha|\\beta))',
      r'\\\1{\2}'),
+    #logarithmic with base 2 (lg)
+    (r'\\lg(\S+)',r'log(\1)/log(2)'),
     # Curly bracket for one-character after power sign
     (r'\^([a-zA-Z0-9])', r'^{(\1)}'),
     # Curly bracket for one-character after underscores sign
     (r'\_([a-zA-Z0-9])', r'_{(\1)}'),
     # Take back wrong conversion
     (r'\{\^\}', r'^'),  # Only cap inside curly bracket
+    #Logarithmic with base
+    (r'\\log_{([0-9A-Za-z\[\]\+\-\*\/\\\(\)\.\^]+)}(\S+)',r'log(\2)/log(\1)'),
     # Fraction with expression inside
     (r'\\frac\{([0-9A-Za-z\[\]\+\-\*\/\\\(\)\.\^]+)\}\{([0-9A-Za-z\[\]\+\-\*\/\\\(\)\.\^]+)\}',
      r'(\1)/(\2)'),
@@ -46,9 +50,9 @@ rules = [
      r'\{\}\.]+)\\right\)',
      r'\\\1^{\2}{\3}'),
     # Inverse trigonometric
-    #(r'\\(sin|cos|tan|cot|sec|csc|log|ln)\^\{-1}\\left\(([0-9A-Za-z\+\-\^\/\\\(\)'
-    # r'\{\}\.]+)\\right\)',
-    # r'\\\1^{\2}{\3}'),
+    (r'\\(sin|cos|tan|cot|sec|csc|log|ln)\^\{-1\}\\left\(([0-9A-Za-z\+\-\^\/\\\(\)'
+     r'\{\}\.]+)\\right\)',
+     r'\\\1^{-1}{\2}'),
     # Trigonometric and logarithmic
     (r'\\(sin|cos|tan|cot|sec|csc|log|ln)\\left\(([0-9A-Za-z\+\-\^\/\\\(\)\{\}\.]+)'
      r'\\right\)', r'\\\1{\2}'),
