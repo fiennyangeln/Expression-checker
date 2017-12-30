@@ -21,13 +21,13 @@
   color: #000;
   margin-top: 70px;
   margin-bottom: 0;
-  font-family: 'Times New Roman', sans-serif;
+  font-family: font-family: "Raleway", sans-serif;
 }
 h2 {
     font-size: 24px;
     color: #000;
-    margin-top: 0;
-    margin-bottom: 70px;
+    margin-top: 30px;
+    margin-bottom: 0px;
     display: block;
     font-family: 'Open Sans', sans-serif;
 }
