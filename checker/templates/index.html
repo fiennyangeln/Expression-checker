@@ -7,13 +7,13 @@
 </head>
 
 <body>
-  <h1>Math Checker</h1>
+  <h1 font-size=300pt class="title-bar">Math Checker</h1>
 
 
 
     {% block content %} {% endblock content %}
 
-  <link rel="stylesheet" href="{% static 'css/general.css' %}"></link>
+
 
   <script type = "text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
   <link href="{% static 'mathquill-0.10.1/mathquill.css' %}" rel="stylesheet"></link>
@@ -21,6 +21,7 @@
   <script type = "text/javascript" src="{% static 'js/activate_mathquill.js' %}"></script>
   <script type = "text/javascript" src="{% static 'js/jquery.cookie.js' %}"></script>
   <script type = "text/javascript" src="{% static 'js/check_answer.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'css/general.css' %}"></link>
 </body>
 
 </html>

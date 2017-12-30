@@ -21,7 +21,7 @@ function check_answer()
       }
     }
   });
-
+  console.log(JSON.stringify(value));
   $.ajax('/check_answer/', {
       type : 'POST',
       contentType : 'application/json',
@@ -48,6 +48,6 @@ function display_result(result){
   }
 };
 
-function display_error(){
+function display_error(error){
   console.log(error);
 };

@@ -14,18 +14,20 @@
     margin-left: 40px;
 }
 
-h1, h2, h3, h4 {
-    font-family: 'Lobster', cursive;
-}
 
-.date {
-    color: #828282;
+.title-bar {
+  font-size : 2500%;
+  font-size: 90px;
+  color: #fff;
+  margin-top: 70px;
+  margin-bottom: 0;
+  font-family: 'Times New Roman', sans-serif;
 }
-
-.save {
-    float: right;
-}
-
-.post-form textarea, .post-form input {
-    width: 100%;
+h2 {
+    font-size: 24px;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 70px;
+    display: block;
+    font-family: 'Open Sans', sans-serif;
 }

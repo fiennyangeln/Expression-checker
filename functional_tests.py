@@ -20,9 +20,9 @@ class Checker(unittest.TestCase):
         self.assertIn('Math Checker', header_text)
 
         #get the inputboxes and enter attribute
-        input_box_1 = self.browser.find_element_by_id('first_input')
+        input_box_1 = self.browser.find_element_by_id('value-1')
         input_box_1.send_keys('1+1')
-        input_box_2 = self.browser.find_element_by_id('second_input')
+        input_box_2 = self.browser.find_element_by_id('value-2')
         input_box_2.send_keys('2')
 
         #send the attribute entered
@@ -31,6 +31,7 @@ class Checker(unittest.TestCase):
 
         #check the result
         result = self.browser.find_element_by_id('result')
+        self.assertEqual('True', result)
 
 
 if __name__=='__main__':
