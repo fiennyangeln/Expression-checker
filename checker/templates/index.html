@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html>
 <head class="page-header">
@@ -7,13 +6,19 @@
 </head>
 
 <body>
-  <h1 font-size=300pt class="title-bar">Math Checker</h1>
-
-
-
+  <br><br><br>
+  <div class="ui ten columns centered grid">
+  <h1 class="ui header">
+    <i class="address book icon"></i>
+    <div class="content">
+      Math Checker
+    </div>
+  </h1>
+  </div>
+  <br><br><br>
+  <div class="ui ten columns centered grid">
     {% block content %} {% endblock content %}
-
-
+  </div>
 
   <script type = "text/javascript" src="{% static 'js/jquery-3.2.1.js' %}"></script>
   <link href="{% static 'mathquill-0.10.1/mathquill.css' %}" rel="stylesheet"></link>
@@ -21,7 +26,9 @@
   <script type = "text/javascript" src="{% static 'js/activate_mathquill.js' %}"></script>
   <script type = "text/javascript" src="{% static 'js/jquery.cookie.js' %}"></script>
   <script type = "text/javascript" src="{% static 'js/check_answer.js' %}"></script>
-  <link rel="stylesheet" href="{% static 'css/general.css' %}"></link>
+  <link href="{% static 'semanticui/semantic.css' %}" rel="stylesheet"></link>
+  <script type = "text/javascript" src="{% static 'semanticui/semantic.js' %}"></script>
+  <!--<link rel="stylesheet" href="{% static 'css/general.css' %}"></link>-->
 </body>
 
 </html>

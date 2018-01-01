@@ -36,7 +36,12 @@ function check_answer()
   }
 );
 };
-
+function clear_answer()
+{
+  console.log("clearing");
+  $('#hidden-1').val('');
+  $('#hidden-2').val('');
+};
 function display_result(result){
   var paragraph = document.getElementById("result");
   if (result){

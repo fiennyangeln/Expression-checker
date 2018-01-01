@@ -5,22 +5,22 @@
 <div class="panel panel-default">
   <div class="panel-heading">
   {% for i in "12" %}
-
+  <h4 class="ui inline header">
+    <i class="calculator icon"></i>
     {% if i == "1" %}
-      <h2> First Value </h2>
+      First Value
     {% else %}
-      <h2> Second Value </h2>
+      Second Value
     {% endif %}
-
+  </h4>
     <div class="row">
-      <div id="col-md-6">
-        <div id="answer_container-61-q">
         <span style="min-width:120px; min-height:25px;" id="value-{{i}}"></span>
-        <input type="hidden" name=""id="hidden-{{i}}" ></div>
-      </div>
+        <input type="hidden" name=""id="hidden-{{i}}" >
     </div>
   {% endfor %}
-<input class="btn btn-default" type="button" value="Check" onclick="check_answer()"/>
+  <br>
+<input class="ui primary button" type="button" value="Check" onclick="check_answer()"/>
+<input class="ui button" type="button" value="Clear" onclick="clear_answer()"/>
 <span id="result"></span>
 </div>
 </div>
