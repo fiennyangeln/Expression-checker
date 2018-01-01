@@ -1,0 +1,6 @@
+Django==1.11
+mpmath==1.0.0
+pytz==2017.3
+selenium==3.8.0
+simplejson==3.13.2
+sympy==1.1.1
