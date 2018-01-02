@@ -17,7 +17,7 @@ class Checker(StaticLiveServerTestCase):
         self.browser.quit()
 
     def test_interface(self):
-        self.browser.get('http://localhost:8000')
+        #self.browser.get('http://localhost:8000')
 
         #check title and header
         self.assertIn('Math Checker',self.browser.title)
