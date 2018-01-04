@@ -58,12 +58,15 @@ def replace_binom(expression):
         expression = re.sub(r'(\d+)'+re.escape(bottom)+r'(\d+)',r'\1*1*\2',expression)
         expression = re.sub(r'(\d+)'+re.escape(bottom),r'\1*1',expression)
         expression = re.sub(re.escape(bottom)+r'(\d+)',r'1*\1', expression)
-        #expression = re.sub(bottom,'1', expression)
         expression = re.sub(r'([^A-Za-z])'+re.escape(bottom)+r'([^A-Za-z])',r'\g<1>1\2',expression)
     if not top.isnumeric():
-        bottomInt = int(bottom)
+        bottomInt = int(eval(bottom))
         topInt = bottomInt+1
-        expression = re.sub(top,str(topInt),expression)
+        topStr = str(topInt)
+        expression = re.sub(r'(\d+)'+re.escape(top)+r'(\d+)',r'\1*'+re.escape(topStr)+r'*\2',expression)
+        expression = re.sub(r'(\d+)'+re.escape(top),r'\1*'+re.escape(topStr),expression)
+        expression = re.sub(re.escape(top)+r'(\d+)',re.escape(topStr)+r'*\1', expression)
+        expression = re.sub(r'([^A-Za-z])'+re.escape(top)+r'([^A-Za-z])',r'\g<1>'+re.escape(topStr)+r'\2',expression)
     print('top'+top)
     #print(groups.pos)
     print('bottom'+bottom)

@@ -38,7 +38,9 @@ function check_answer()
 };
 function clear_answer()
 {
-  console.log("clearing");
+  let MQ = MathQuill.getInterface(MathQuill.getInterface.MAX);
+  MQ.MathField($('.mathquill-editable')).empty();
+  $('.mathquill-editable').empty();
   $('#hidden-1').val('');
   $('#hidden-2').val('');
 };
