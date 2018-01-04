@@ -39,8 +39,8 @@ function check_answer()
 function clear_answer()
 {
   let MQ = MathQuill.getInterface(MathQuill.getInterface.MAX);
-  MQ.MathField($('.mathquill-editable')).empty();
-  $('.mathquill-editable').empty();
+  //MQ.MathField($('.mathquill-editable')).latex("");
+  $('.mathquill-editable').latex("");
   $('#hidden-1').val('');
   $('#hidden-2').val('');
 };
