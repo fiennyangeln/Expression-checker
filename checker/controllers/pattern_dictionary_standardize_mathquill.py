@@ -20,19 +20,21 @@ rules = [
     (r'\_([a-zA-Z0-9])', r'_{\1}'),
     # Take back wrong conversion
     (r'\{\^\}', r'^'),  # Only cap inside curly bracket
+    (r'\\left\(', r'{'),  # left bracket
+    (r'\\right\)', r'}'),  # right bracket
     # Trigonometric and logarithmic with power
     (r'\\(sin|cos|tan|cot|sec|csc|log|ln)\^\{(\S+)\}\\left\(([0-9A-Za-z\+\-\^\/\\\(\)'
-     r'\{\}\.]+)\\right\)',
+     r'\{\}\.]+(?=\\right\)))(\\right\))',
      r'\\\1^{\2}{\3}'),
     # Inverse trigonometric
     (r'\\(sin|cos|tan|cot|sec|csc|log|ln)\^\{-1\}\\left\(([0-9A-Za-z\+\-\^\/\\\(\)'
-     r'\{\}\.]+)\\right\)',
+     r'\{\}\.]+(?=\\right\)))\\right\)',
      r'\\\1^{-1}{\2}'),
     # Trigonometric and logarithmic
     (r'\\(sin|cos|tan|cot|sec|csc|log|ln)\\left\(([0-9A-Za-z\+\-\^\/\\\(\)\{\}\.]+)'
      r'\\right\)', r'\\\1{\2}'),
     # Single trigonometric expression without power with symbol
-    (r'\\(sin|cos|tan|cot|sec|csc|log|ln)\^\{(\S+)\}([0-9A-Za-z]+)([\+\-\\]?)',
+    (r'\\?(sin|cos|tan|cot|sec|csc|log|ln)\^\{(\S+)\}([0-9A-Za-z]+)([\+\-\\]?)',
      r'\\\1^{\2}{\3}\4'),
     # Single trigonometric expression without symbol
     (r'\\(sin|cos|tan|cot|sec|csc|log|ln)([0-9A-Za-z]+)([\+\-\\]?)',

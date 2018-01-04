@@ -11,6 +11,8 @@ rules = [
     (r'\^\{\\circ\}', '/180*\\pi'),
     # Degree to radian conversion
     (r'\\degree', '/180*\\pi'),
+    # Binomial for numbers
+    (r'\\binom\{([0-9\+\-\*\/\\\(\)\.]+)\}\{([0-9\+\-\*\/\\\(\)\.]+)\}',r'{binomial(\1,\2)}'),
     # Improper fraction
     (r'(\d+)\\frac\{(\d+)\}\{(\d+)\}', r'(\1+(\2)/(\3))'),
     # Move the variable/symbol after fraction inside the numerator of fraction
@@ -61,7 +63,7 @@ rules = [
      r'\\gamma|\\lambda|\\theta|\\mu|\\sigma|\\pi)([\+\-\\]?)',
      r'\\\1^{\2}{\3\4}\5'),
     # Single trigonometric expression with symbol
-    (r'\\(sin|cos|tan|cot|sec|csc|log|ln)([0-9A-Za-z]*)(\\alpha|\\beta|\\gamma|'
+    (r'\\?(sin|cos|tan|cot|sec|csc|log|ln)([0-9A-Za-z]*)(\\alpha|\\beta|\\gamma|'
      r'\\lambda|\\theta|\\mu|\\sigma|\\pi)([\+\-\\]?)',
      r'\\\1{\2\3}\4'),
     # Single trigonometric expression without power with symbol
@@ -148,7 +150,9 @@ rules = [
     (r'\{([0-9A-Za-z\+\-\*\/\\\(\)\.\^]+)\}\^\{([0-9A-Za-z\+\-\*\/\\\(\)\.\^]+)\}',
      r'(\1)**(\2)'),
     # Nested power
-    (r'\)\^(\d+)', r')*\1'),
+    (r'\)\^(\d+)', r')**(\1)'),
+    # Nested power with curly brackets
+    (r'\)\^\{(\d+)\}', r')**(\1)'),
     # n-th root
     (r'\\sqrt\[(\d+)\]\{([0-9A-Za-z\+\-\*\/\\\(\)\.\^]+)\}', r'root(\2, \1)'),
     # Square root
@@ -161,7 +165,7 @@ rules = [
     # Trigonometric and logarithmic with power
     (r'\\(sin|cos|tan|cot|sec|csc|log|ln)\^\{([0-9A-Za-z\+\-\*\/\\\(\)\.]+)\}'
      r'\{([0-9A-Za-z\+\-\*\/\\\(\)\.]+)\}',
-     r'\1(\3)**(\2)'),
+     r'(\1(\3))**(\2)'),
     # Trigonometric and logarithmic
     (r'\\(sin|cos|tan|cot|sec|csc|log|ln)\{([0-9A-Za-z\+\-\*\/\\\(\)\.\^]+)\}',
      r'\1(\2)'),
@@ -212,7 +216,7 @@ rules = [
     (r'\)(\d+)', r')*\1'),
     # Trigonometry, logarithm, and inverse logarithm (for Mathquill)
     # Inverse trigonometric
-    (r'\\(sin|cos|tan)\^\{\-1}([0-9A-Za-z\+\-\^\/\\\(\)\{\}\.]+)', r'arc\1(\2)'),
+    (r'\\?(sin|cos|tan)\^\{\-1}([0-9A-Za-z\+\-\^\/\\\(\)\{\}\.]+)', r'arc\1(\2)'),
     # Trigonometric and logarithmic with power
     (r'\\(sin|cos|tan|cot|sec|csc|log|ln)\^\{(\S+)\}([0-9A-Za-z\+\-\^\/\\\(\)\{\}\.]+)',
      r'\1(\3)**(\2)'),
@@ -266,6 +270,7 @@ rules = [
     (r'r\*e', r're'),
     (r'i\*m', r'im'),
     (r'f\*a\*c\*t\*o\*r\*i\*a\*l', r'factorial'),
+    (r'b\*i\*n\*o\*m\*i\*a\*l\*\(', r'binomial('),
     (r'f\*r\*a\*c', r'frac'),
     (r'a\*b\*s', r'abs'),
     (r'p\*i', r'pi'),
@@ -274,13 +279,15 @@ rules = [
     (r'rexp', r'r*exp'),
 
     #Fraction with simple expression one more time
-    (r'\\frac\{([0-9A-Za-z\[\]\+\-\*\/\\\(\)\.\^]+)\}\{([0-9A-Za-z\[\]\+\-\*\/\\\(\)\.\^]+)\}',
+    (r'\\frac\{([0-9A-Za-z, \[\]\+\-\*\/\\\(\)\.\^]+)\}\{([0-9A-Za-z, \[\]\+\-\*\/\\\(\)\.\^]+)\}',
     r'(\1)/(\2)'),
 
     # pi
     (r'\\pi', r'pi'),
     # Capital letter (which SymPy cannot work with)
     (r'N', r'n'),
+    # Remove unnecessarry backslash
+    (r'\\', r''),
     # Postprocess of plus minus symbol
     (r'\*?\(pm\)\*?', r'pm'),
     (r'\*?\(mp\)\*?', r'mp'),
@@ -290,5 +297,14 @@ rules = [
     # 2 consecutive parentheses, sometimes needed at the end
     (r'\)\(', r')*('),
 
-
 ]
+
+# Special binom rules for cases with constants
+binomrules = {
+    #binom replacement
+    'replace': (r'\\binom\{([0-9A-Za-z\+\-\*\/\\\(\)\.]+)\}\{([0-9A-Za-z\+\-\*\/\\\(\)\.]+)\}',r'{binomial(\1,\2)}'),
+    #binom get the top value
+    'topbottom':(r'\\binom\{([0-9A-Za-z\+\-\*\/\\\(\)\.]+)\}\{([0-9A-Za-z\+\-\*\/\\\(\)\.]+)\}',r'\1|\2|'),
+    #binom get the base value
+    'replacebottom': (r'\\binom\{([0-9A-Za-z\+\-\*\/\\\(\)\.]+)\}\{([0-9A-Za-z\+\-\*\/\\\(\)\.]+)\}',r'\2'),
+}

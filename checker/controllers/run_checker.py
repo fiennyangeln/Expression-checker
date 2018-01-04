@@ -204,12 +204,22 @@ log_cases =[
         ["\\lg \\left(x+1\\right)", True],
         ["\\frac{ 1}{2} \\ln \\left( x-4 \\right)",True],
         ["\\log_a \\left(\\frac{1}{2}\\right)" , True],
+    ]
 
-
-
-
+additional_cases =[
+        ["\\binom{10}{r}(-\\frac{1}{2})^{r}x^{30-3r}", True],
+        ["\\binom{12}{r}(-\\frac{1}{2})^{r}x^{12-2r}", True],
+        #["\\binom{10}{3/3}", True],
+        #["\\frac{4x^{3}-3x^{2}-10}{\\sqrt[3]{(x^{3}-5)^{2}}}", True],
+        #["15\\sin^{4}\\left(3x\\right)\\cos \\left(3x\\right)-8\\left(2x+3\\right)^{3}\\sin\\left(2x+3\\right)^{4}", True],
+        #["\\frac{2e^{sin^{-1}2x}}{\\sqrt{1-4x^{2}}}", True],
+        #["-6\\operatorname{cosec}^{3} \\left(2x+1\\right)\\cot \\left(2x+1\\right)", True],
+        #["-\\frac{1}{3} \\ln|2-3x|+c", True],
+        #["\\sin^{-1}x-\\sqrt{1-x^{2}}+c", True],
+        #["\\frac{\\tan ^2x}{2}-\\ln \\left|\\sec x\\right|-\\frac{3}{\\pi }x+1", True],
 
 ]
-error_data = expression_checker.test_expression(all_Cases)
-error_data = expression_checker.test_expression(log_cases)
+#error_data = expression_checker.test_expression(all_Cases)
+#error_data = expression_checker.test_expression(log_cases)
+error_data = expression_checker.test_expression(additional_cases)
 expression_checker.test_expression(error_data)
