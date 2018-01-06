@@ -47,28 +47,27 @@ def replace_binom(expression):
     rules = pattern_dictionary_all.binomrules['topbottom']
     pattern = rules[0]
     p = re.compile(pattern)
-    listexp = p.split(expression)
-    print(listexp)
-    groups = p.search(expression)
-    top = groups.group(1)
-    bottom = groups.group(2)
-    if top.isnumeric() and bottom.isnumeric():
-        return expression
-    if not bottom.isnumeric():
-        expression = re.sub(r'(\d+)'+re.escape(bottom)+r'(\d+)',r'\1*1*\2',expression)
-        expression = re.sub(r'(\d+)'+re.escape(bottom),r'\1*1',expression)
-        expression = re.sub(re.escape(bottom)+r'(\d+)',r'1*\1', expression)
-        expression = re.sub(r'([^A-Za-z])'+re.escape(bottom)+r'([^A-Za-z])',r'\g<1>1\2',expression)
-    if not top.isnumeric():
-        bottomInt = int(eval(bottom))
-        topInt = bottomInt+1
-        topStr = str(topInt)
-        expression = re.sub(r'(\d+)'+re.escape(top)+r'(\d+)',r'\1*'+re.escape(topStr)+r'*\2',expression)
-        expression = re.sub(r'(\d+)'+re.escape(top),r'\1*'+re.escape(topStr),expression)
-        expression = re.sub(re.escape(top)+r'(\d+)',re.escape(topStr)+r'*\1', expression)
-        expression = re.sub(r'([^A-Za-z])'+re.escape(top)+r'([^A-Za-z])',r'\g<1>'+re.escape(topStr)+r'\2',expression)
-    print('top'+top)
-    #print(groups.pos)
-    print('bottom'+bottom)
-    print('expression'+expression)
+    groups = p.findall(expression)
+    for i in range(len(groups)):
+        group = groups[i]
+        top = group[0]
+        bottom = group[1]
+        if top.isnumeric() and bottom.isnumeric():
+            continue
+        if not bottom.isnumeric():
+            expression = re.sub(r'(\d+)'+re.escape(bottom)+r'(\d+)',r'\1*1*\2',expression)
+            expression = re.sub(r'(\d+)'+re.escape(bottom),r'\1*1',expression)
+            expression = re.sub(re.escape(bottom)+r'(\d+)',r'1*\1', expression)
+            expression = re.sub(r'([^A-Za-z])'+re.escape(bottom)+r'([^A-Za-z])',r'\g<1>1\2',expression)
+        if not top.isnumeric():
+            bottomInt = int(eval(bottom))
+            topInt = bottomInt+1
+            topStr = str(topInt)
+            expression = re.sub(r'(\d+)'+re.escape(top)+r'(\d+)',r'\1*'+re.escape(topStr)+r'*\2',expression)
+            expression = re.sub(r'(\d+)'+re.escape(top),r'\1*'+re.escape(topStr),expression)
+            expression = re.sub(re.escape(top)+r'(\d+)',re.escape(topStr)+r'*\1', expression)
+            expression = re.sub(r'([^A-Za-z])'+re.escape(top)+r'([^A-Za-z])',r'\g<1>'+re.escape(topStr)+r'\2',expression)
+        # update the groups value
+        groups = p.findall(expression)
+
     return expression

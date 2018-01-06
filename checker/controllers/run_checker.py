@@ -207,6 +207,8 @@ log_cases =[
     ]
 
 additional_cases =[
+        ["\\binom{10}{r}\\binom{3}{x}(-\\frac{1}{2})^{r}x^{30-3r}", True],
+
         ["\\binom{10}{r}(-\\frac{1}{2})^{r}x^{30-3r}", True],
         ["\\binom{12}{r}(-\\frac{1}{2})^{r}x^{12-2r}", True],
         ["\\binom{r}{3/3}(\\frac{r}{3})", True],
@@ -220,6 +222,6 @@ additional_cases =[
 
 ]
 #error_data = expression_checker.test_expression(all_Cases)
-error_data = expression_checker.test_expression(log_cases)
+#error_data = expression_checker.test_expression(log_cases)
 error_data = expression_checker.test_expression(additional_cases)
 expression_checker.test_expression(error_data)
