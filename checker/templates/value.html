@@ -8,21 +8,35 @@
   <h4 class="ui inline header">
     <i class="calculator icon"></i>
     {% if i == "1" %}
-      First Value
+      First Expression
     {% else %}
-      Second Value
+      Second Expression
     {% endif %}
   </h4>
     <div class="row">
         <span style="min-width:120px; min-height:25px;" id="value-{{i}}"></span>
         <input type="hidden" name=""id="hidden-{{i}}" >
     </div>
+    {% if i == "1" %}
+      <h1> = </h1>
+    {% endif %}
   {% endfor %}
-  <br>
+
+  <h1>?</h1>
   {% csrf_token %}
 <input class="ui primary button" type="button" value="Check" onclick="check_answer()"/>
 <!--<input class="ui button" type="button" value="Clear" onclick="clear_answer()"/>-->
 <br>
+<br>
+<span id="resultgroup" style="display:none;">
+<div class="ui message">
+  <i class="close icon"></i>
+  <div class="header">
+    <span id="resultheader"></span>
+  </div>
+  <span id="result"></span>
+</div>
+</span>
 <span id="result"></span>
 </div>
 </div>

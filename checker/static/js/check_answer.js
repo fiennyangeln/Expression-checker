@@ -1,7 +1,7 @@
 function check_answer()
 {
   var value ={};
-
+  $("#resultgroup").hide();
   var value_1 = document.getElementById("hidden-1").value;
   var value_2 = document.getElementById("hidden-2").value;
   value['value_1'] = value_1;
@@ -47,11 +47,19 @@ function clear_answer()
 function display_result(result){
   var paragraph = document.getElementById("result");
   if (result){
-      paragraph.innerHTML = "<p>True</p>";
+      paragraph.innerHTML = "<p>They are both same expression. </p>";
   }
   else {
-      paragraph.innerHTML = "<p>It is a two different element</p>";
+      paragraph.innerHTML = "<p>It is a two different expression. </p>";
   }
+  var paragraphheader = document.getElementById("resultheader");
+  if (result){
+      paragraphheader.innerHTML = "Yes, they are.";
+  }
+  else {
+      paragraphheader.innerHTML = "No, they arent";
+  }
+  $("#resultgroup").show();
 };
 
 function display_error(error){
